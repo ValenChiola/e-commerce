@@ -1,11 +1,11 @@
 import React from "react";
 import { capitalize } from "../helpers/capitalize";
-import INFOMARTION from "../information";
+import INFORMATION from "../information";
 import { Category } from "./Product/api/products";
 
 const categories = Object.values(Category);
 
-const { all } = INFOMARTION;
+const { all } = INFORMATION;
 
 export const CategorySelector = ({ state: [category, setCategory] }: Props) => (
   <select defaultValue={category ?? all}>

@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useCartContext } from "../context/CartContext";
-import INFOMARTION from "../information";
+import INFORMATION from "../information";
 import { Modal } from "./Modal";
 import { Products } from "./Product/Products";
 
@@ -11,7 +11,7 @@ export const Cart = () => {
   const checkout = useCallback(
     () =>
       window.open(
-        `https://wa.me/${INFOMARTION.phone}?text=${getCheckoutText()}`
+        `https://wa.me/${INFORMATION.phone}?text=${getCheckoutText()}`
       ),
     [getCheckoutText]
   );

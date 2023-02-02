@@ -1,25 +1,25 @@
 import ReactModal, { Props } from "react-modal";
 
-export const Modal = (props: Props) => (
+export const Modal = ({ children, style, ...rest }: Props) => (
   <ReactModal
-    {...props}
+    {...rest}
     style={{
       overlay: {
         backgroundColor: "#000000bf",
-        ...props.style?.content,
+        ...style?.content,
       },
       content: {
         width: 700,
         height: "fit-content",
-        maxHeight: '90%',
+        maxHeight: "90%",
         inset: "50%",
         transform: "translate(-50%, -50%)",
         textAlign: "center",
         overflow: "auto",
-        ...props.style?.content,
+        ...style?.content,
       },
     }}
   >
-    {props.children}
+    {children}
   </ReactModal>
 );
