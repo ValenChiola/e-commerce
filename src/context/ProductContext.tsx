@@ -1,8 +1,8 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import { Modal } from "../components/Modal";
-import { ProductDTO } from "../components/Product/api/products";
 
-import { ProductItem } from "../components/ProductItem";
+import { ProductItem } from "../components/Product/ProductItem";
+import { ProductDTO } from "../types";
 
 const Context = createContext({} as ContextValues);
 Context.displayName = "ProductContext";

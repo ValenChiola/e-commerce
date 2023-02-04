@@ -1,12 +1,13 @@
 import { useMemo } from "react";
-import { useCartContext } from "../context/CartContext";
-import { useProductContext } from "../context/ProductContext";
-import { capitalize } from "../helpers/capitalize";
-import { parseCurrency } from "../helpers/parseCurrency";
-import { ProductDTO } from "./Product/api/products";
+import { useCartContext } from "../../context/CartContext";
+import { useProductContext } from "../../context/ProductContext";
+import { capitalize } from "../../helpers/capitalize";
+import { parseCurrency } from "../../helpers/parseCurrency";
+import { ProductDTO } from "../../types";
+import { Rating } from "./Rating";
 
 export const ProductItem = ({ showDescription, ...product }: Props) => {
-  const { id, title, price, image, description } = product;
+  const { id, title, price, image, description, rating } = product;
 
   const { cart, addProduct, deleteProduct } = useCartContext();
   const { setProduct } = useProductContext();
@@ -24,6 +25,7 @@ export const ProductItem = ({ showDescription, ...product }: Props) => {
           <p>{parseCurrency(price)}</p>
         </div>
         <img src={image} alt={description} width={200} height={200} />
+        <Rating {...rating} />
         {showDescription && (
           <p style={{ padding: "1em" }}>{capitalize(description)}</p>
         )}

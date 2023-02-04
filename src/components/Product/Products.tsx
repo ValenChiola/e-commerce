@@ -1,5 +1,5 @@
-import { ProductItem } from "../ProductItem";
-import { ProductDTO } from "./api/products";
+import { ProductDTO } from "../../types";
+import { ProductItem } from "./ProductItem";
 
 export const Products = ({ products }: { products: ProductDTO[] }) => (
   <div className="products">

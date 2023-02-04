@@ -3,8 +3,8 @@ import {
   ReactNode, useCallback, useContext,
   useState
 } from "react";
-import { ProductDTO } from "../components/Product/api/products";
 import { parseCurrency } from "../helpers/parseCurrency";
+import { ProductDTO } from "../types";
 
 const Context = createContext({} as ContextValues);
 Context.displayName = "CartContext";

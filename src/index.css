@@ -45,26 +45,32 @@ select {
   outline: 0;
 }
 
-button {
+input[type="checkbox"] {
   cursor: pointer;
 }
 
-button.success {
+button {
+  cursor: pointer;
   width: 140px;
   color: white;
-  background-color: green;
   height: 30px;
   border: 0;
   border-radius: var(--border-radius);
-  margin-top: 1.5em;
+}
+
+button.success {
+  background-color: green;
+}
+
+button.danger {
+  background-color: red;
 }
 
 button.outlined {
   all: unset;
   cursor: pointer;
-  outline: 0;
-  border: 0;
   color: black;
+  display: flex;
 }
 
 button.round {
@@ -81,15 +87,30 @@ button.round:disabled {
 }
 
 main {
+  display: flex;
   margin: 2em;
   text-align: center;
 }
 
+main > aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 2em 4.5em 1em 1em;
+}
+
+main > aside > div {
+  border-radius: var(--border-radius);
+  width: 110%;
+}
+
 main > div.products {
   display: grid;
-  margin: 2em auto;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
+  margin: 2em;
+  width: 100%;
+  max-height: 500px;
 }
 
 .product-item {
@@ -115,6 +136,24 @@ main > div.products {
   bottom: 5px;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  gap: 10px
+}
+
+.flex-between {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  gap: 10px
+}
+
 @media (max-width: 600px) {
   nav {
     flex-direction: column;
@@ -123,5 +162,16 @@ main > div.products {
 
   nav > h2 {
     margin: 0;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  main > div.products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
   }
 }
