@@ -8,7 +8,7 @@ import { RatingFilter } from "./components/Filters/RatingFilter";
 import { getProducts } from "./components/Product/api/products";
 import { Products } from "./components/Product/Products";
 import INFORMATION from "./information";
-import { FilterFn, FilterProps, Filters, ProductDTO } from "./types";
+import { FilterFn, FilterProps, Filters } from "./types";
 
 Modal.setAppElement("#root");
 
@@ -28,10 +28,10 @@ const App = () => {
   const matches = useMemo(() => {
     const filtersToApply = Object.values(filters).filter(Boolean);
 
-    let matches: ProductDTO[] = structuredClone(data);
+    let matches: typeof data = structuredClone(data);
 
     filtersToApply.forEach(
-      (filter) => filter && (matches = matches.filter(filter))
+      (filter) => filter && (matches = matches?.filter(filter))
     );
 
     return matches;
