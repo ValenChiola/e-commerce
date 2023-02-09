@@ -1,10 +1,15 @@
 import {
   createContext,
-  ReactNode, useCallback, useContext,
-  useState
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
 } from "react";
+import { getCart } from "../components/Cart/api";
 import { parseCurrency } from "../helpers/parseCurrency";
 import { ProductDTO } from "../types";
+import { useAuthContext } from "./AuthContext";
 
 const Context = createContext({} as ContextValues);
 Context.displayName = "CartContext";
@@ -12,12 +17,19 @@ Context.displayName = "CartContext";
 export const useCartContext = () => useContext(Context);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
+  const { me } = useAuthContext();
   const [cart, setCart] = useState<ProductDTO[]>([]);
+
+  useEffect(() => {
+    if (!me?.uid) return;
+    setCart(getCart(me.uid));
+  }, [me?.uid]);
 
   const addProduct = (product: ProductDTO) => {
     const index = cart.findIndex(({ id }) => id === product.id);
 
-    if (index === -1) // First time
+    if (index === -1)
+      // First time
       return setCart((old) => old.concat({ ...product, quantity: 1 }));
 
     setCart((old) =>

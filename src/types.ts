@@ -1,6 +1,6 @@
 export type FilterFn = ((product: ProductDTO) => boolean) | null;
 
-export type Filters = "price" | "category" | "rating";
+export type FilterTypes = "price" | "category" | "rating";
 
 export interface FilterProps {
   onChange: (filter: FilterFn) => void;

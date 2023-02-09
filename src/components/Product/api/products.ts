@@ -1,7 +1,8 @@
 import Axios from "axios";
+import { App } from "../../../AppConfig";
 import { ProductDTO, ProductFromApi } from "../../../types";
 
-Axios.defaults.baseURL = "https://fakestoreapi.com";
+Axios.defaults.baseURL = App.API;
 
 export const getProducts = () =>
   Axios.get<ProductFromApi[]>("/products").then(
