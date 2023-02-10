@@ -83,7 +83,7 @@ const App = () => {
         <h1 style={{ fontSize: "1.8em" }}>El D3cod3r</h1>
         <div className="flex-between">
           <div className="flex-column">
-            {me.email}
+            {me.displayName ?? me.email}
             <button className="danger" onClick={handleSignOut}>
               Cerrar sesión
             </button>

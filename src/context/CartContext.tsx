@@ -6,7 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { getCart } from "../components/Cart/api";
+import getCart from "../components/Cart/getCart";
 import { parseCurrency } from "../helpers/parseCurrency";
 import { ProductDTO } from "../types";
 import { useAuthContext } from "./AuthContext";

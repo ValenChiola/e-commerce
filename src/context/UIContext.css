@@ -1,0 +1,23 @@
+.toast-notification {
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 2em;
+  padding: 0 1em;
+  z-index: 4;
+}
+
+.success {
+  background-color: var(--color-success);
+}
+
+.error {
+  background-color: var(--color-error);
+}
+.info {
+  background-color: var(--color-info);
+}

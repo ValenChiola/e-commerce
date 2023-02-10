@@ -5,6 +5,7 @@ import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import { ProductProvider } from "./context/ProductContext";
+import { UIProvider } from "./context/UIContext";
 import "./index.css";
 
 const root = ReactDOM.createRoot(
@@ -15,13 +16,15 @@ const queryClient = new QueryClient();
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <CartProvider>
-        <ProductProvider>
-          <App />
-        </ProductProvider>
-      </CartProvider>
-    </AuthProvider>
+    <UIProvider>
+      <AuthProvider>
+        <CartProvider>
+          <ProductProvider>
+            <App />
+          </ProductProvider>
+        </CartProvider>
+      </AuthProvider>
+    </UIProvider>
     <ReactQueryDevtools />
   </QueryClientProvider>
 );

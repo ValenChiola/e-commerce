@@ -1,4 +1,7 @@
 :root {
+  --color-success: #10b981;
+  --color-info: #4c8df6;
+  --color-error: #ef4444;
   --border-radius: 5px;
 }
 
@@ -62,10 +65,10 @@ button.danger {
 }
 
 button.outlined {
-  all: unset;
-  cursor: pointer;
+  background-color: transparent;
   color: black;
-  display: flex;
+  text-decoration: underline;
+  margin: 0;
 }
 
 button.round {

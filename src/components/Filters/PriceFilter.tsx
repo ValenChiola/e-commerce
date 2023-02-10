@@ -29,7 +29,7 @@ export const PriceFilter = ({ onChange }: FilterProps) => {
   };
 
   return (
-    <Filter title="Precio">
+    <Filter title="Price">
       <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
         <label>
           Min:

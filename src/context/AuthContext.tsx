@@ -1,9 +1,14 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import {
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut as firebaseSignOut,
 } from "firebase/auth";
-import { firebaseAuth, FirebaseUser } from "../Services/Firebase";
+import {
+  firebaseAuth,
+  FirebaseUser,
+  googleProvider,
+} from "../Services/Firebase";
 
 // Create Context
 const Context = createContext<AuthContextValues>({} as AuthContextValues);
@@ -11,6 +16,8 @@ Context.displayName = "AuthContext";
 
 // Create Hook
 export const useAuthContext = () => useContext(Context);
+
+const auth = firebaseAuth()
 
 // Create HOC
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
@@ -21,7 +28,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const signIn: AuthContextValues["signIn"] = async ({ email, password }) => {
     try {
-      const auth = firebaseAuth();
 
       if (!email || !password)
         return Promise.reject("Revise el usuario y contraseña");
@@ -38,9 +44,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const signInWithGoogle: AuthContextValues["signInWithGoogle"] = () =>
+    signInWithPopup(auth, googleProvider).then(({ user }) =>
+      setMe(user)
+    );
+
   /** SignOut from firebase & clean all data session */
   const signOut: AuthContextValues["signOut"] = () =>
-    firebaseSignOut(firebaseAuth()).then(clearLocalStorage);
+    firebaseSignOut(auth).then(clearLocalStorage);
 
   const clearLocalStorage = () => {
     setMe(null);
@@ -48,7 +59,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <Context.Provider value={{ me, signIn, signOut }}>
+    <Context.Provider value={{ me, signIn, signInWithGoogle, signOut }}>
       {children}
     </Context.Provider>
   );
@@ -61,6 +72,7 @@ interface AuthContextValues {
     email,
     password,
   }: SignInProps) => Promise<AuthContextValues["me"]>;
+  signInWithGoogle: () => void;
   signOut: () => void;
 }
 

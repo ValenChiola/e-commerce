@@ -25,7 +25,7 @@ export const CategoryFilter = ({ onChange }: FilterProps) => {
   };
 
   return (
-    <Filter title="Categoria">
+    <Filter title="Category">
       {categories.map((item) => (
         <div key={item} className="flex-between">
           <span>{capitalize(item)}</span>
