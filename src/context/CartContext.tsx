@@ -17,19 +17,25 @@ Context.displayName = "CartContext";
 export const useCartContext = () => useContext(Context);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const { me } = useAuthContext();
   const [cart, setCart] = useState<ProductDTO[]>([]);
+  const { me } = useAuthContext();
 
   useEffect(() => {
     if (!me?.uid) return;
+
     setCart(getCart(me.uid));
   }, [me?.uid]);
+
+  useEffect(() => {
+    if (!me) return;
+
+    localStorage.setItem(`cart-${me.uid}`, JSON.stringify(cart));
+  }, [me, cart]);
 
   const addProduct = (product: ProductDTO) => {
     const index = cart.findIndex(({ id }) => id === product.id);
 
     if (index === -1)
-      // First time
       return setCart((old) => old.concat({ ...product, quantity: 1 }));
 
     setCart((old) =>

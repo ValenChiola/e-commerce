@@ -15,7 +15,7 @@ export const RatingFilter = ({ onChange }: FilterProps) => {
 
     checked ? copy.add(+name) : copy.delete(+name);
 
-    onChange(copy.size ? ({ rating: { rate } }) => copy.has(rate) : null);
+    onChange(copy.size ? ({ rating: { rate } }) => copy.has(rate) : null, 'rating');
 
     setSelectedRatings(copy);
   };

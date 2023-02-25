@@ -3,7 +3,7 @@ export type FilterFn = ((product: ProductDTO) => boolean) | null;
 export type FilterTypes = "price" | "category" | "rating";
 
 export interface FilterProps {
-  onChange: (filter: FilterFn) => void;
+  onChange: (filter: FilterFn, type: FilterTypes) => void;
 }
 
 export interface ProductDTO extends ProductFromApi {

@@ -3,13 +3,13 @@ import { FilterProps } from "../../types";
 import { Filter } from "./Filter";
 
 export const PriceFilter = ({ onChange }: FilterProps) => {
-  const [min, setMin] = useState<number | null>(null);
-  const [max, setMax] = useState<number | null>(null);
+  const [min, setMin] = useState<number>(0);
+  const [max, setMax] = useState<number>(Infinity);
 
   const handleMinChange = ({ target: { value } }: ChangeEvent) => {
     const num = Math.max(0, +value);
 
-    onChange(({ price }) => price >= num && price <= (max ?? Infinity));
+    onChange(({ price }) => price >= num && price <= (max ?? Infinity), 'price');
 
     setMin(num);
   };
@@ -17,15 +17,15 @@ export const PriceFilter = ({ onChange }: FilterProps) => {
   const handleMaxChange = ({ target: { value } }: ChangeEvent) => {
     const num = Math.max(0, +value);
 
-    onChange(({ price }) => price >= (min ?? 0) && price <= num);
+    onChange(({ price }) => price >= (min ?? 0) && price <= num, 'price');
 
     setMax(num);
   };
 
   const handleDeleteFilters = () => {
-    setMin(null);
-    setMax(null);
-    onChange(({ price }) => price >= 0 && price <= Infinity);
+    setMin(0);
+    setMax(Infinity);
+    onChange(({ price }) => price >= 0 && price <= Infinity, 'price');
   };
 
   return (

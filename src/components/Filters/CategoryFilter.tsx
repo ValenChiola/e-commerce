@@ -19,7 +19,7 @@ export const CategoryFilter = ({ onChange }: FilterProps) => {
 
     checked ? copy.add(value) : copy.delete(value);
 
-    onChange(copy.size ? ({ category }) => copy.has(category) : null);
+    onChange(copy.size ? ({ category }) => copy.has(category) : null, 'category');
 
     setSelectedCategories(copy);
   };
