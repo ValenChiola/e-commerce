@@ -6,6 +6,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import { ProductProvider } from "./context/ProductContext";
 import { UIProvider } from "./context/UIContext";
+
 import "./index.css";
 
 const root = ReactDOM.createRoot(

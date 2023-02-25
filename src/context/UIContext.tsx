@@ -1,9 +1,9 @@
-import React, {
+import {
   createContext,
   ReactNode,
   useContext,
   useEffect,
-  useState,
+  useState
 } from "react";
 
 import "./UIContext.css";

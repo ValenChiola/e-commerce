@@ -4,7 +4,7 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useState,
+  useState
 } from "react";
 import getCart from "../components/Cart/getCart";
 import { parseCurrency } from "../helpers/parseCurrency";

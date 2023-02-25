@@ -1,13 +1,13 @@
+import Modal from "react-modal";
 import { Cart } from "./components/Cart/Cart";
 import { CategoryFilter } from "./components/Filters/CategoryFilter";
 import { PriceFilter } from "./components/Filters/PriceFilter";
 import { RatingFilter } from "./components/Filters/RatingFilter";
+import { Login } from "./components/Login/Login";
 import { Products } from "./components/Product/Products";
 import { Wrapper } from "./components/Wrapper";
 import { useAuthContext } from "./context/AuthContext";
-import { Login } from "./components/Login/Login";
 import { useMatches } from "./hooks/useMatches";
-import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 

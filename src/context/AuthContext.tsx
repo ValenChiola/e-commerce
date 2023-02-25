@@ -1,13 +1,13 @@
-import React, { createContext, ReactNode, useContext, useState } from "react";
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
-  signOut as firebaseSignOut,
+  signOut as firebaseSignOut
 } from "firebase/auth";
+import { createContext, ReactNode, useContext, useState } from "react";
 import {
   firebaseAuth,
   FirebaseUser,
-  googleProvider,
+  googleProvider
 } from "../Services/Firebase";
 
 // Create Context
