@@ -6,6 +6,7 @@ export const Modal = ({ children, style, ...rest }: Props) => (
     style={{
       overlay: {
         backgroundColor: "#000000bf",
+        zIndex: 99,
         ...style?.content,
       },
       content: {

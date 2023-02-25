@@ -41,7 +41,7 @@ export const Login = () => {
   if (isLoging) return <Wrapper>Iniciando sesión...</Wrapper>;
 
   return (
-    <form className="center" onSubmit={handleSubmit}>
+    <form className="center" onSubmit={handleSubmit} autoComplete="off">
       <h1>E-commerce</h1>
       <label htmlFor="email">
         Email
